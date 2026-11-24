@@ -1,0 +1,1874 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>珠光入灯 · 匠艺传 | 非遗琉璃珠灯</title>  
+  
+<style>  
+/* ==================================================  
+   01. 全局设计规范  
+   ================================================== */  
+:root {  
+    --ink: #111719;  
+    --teal: #1C7882;  
+    --ivory: #F5F2EB;  
+    --gold: #B58A54;  
+    --red: #A93631;  
+  
+    --sidebar-width: 250px;  
+    --font-title: "Source Han Serif SC", "思源宋体", "Songti SC", serif;  
+    --font-body: "Source Han Sans SC", "思源黑体", "Microsoft YaHei", sans-serif;  
+}  
+  
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+}  
+  
+html {  
+    scroll-behavior: smooth;  
+    scroll-padding-top: 30px;  
+}  
+  
+body {  
+    background: var(--ivory);  
+    color: var(--ink);  
+    font-family: var(--font-body);  
+    line-height: 1.8;  
+    overflow-x: hidden;  
+}  
+  
+img {  
+    width: 100%;  
+    display: block;  
+    object-fit: cover;  
+}  
+  
+a {  
+    text-decoration: none;  
+    color: inherit;  
+}  
+  
+button {  
+    font-family: inherit;  
+}  
+  
+section {  
+    scroll-margin-top: 30px;  
+}  
+  
+::selection {  
+    background: var(--teal);  
+    color: var(--ivory);  
+}  
+  
+  
+/* ==================================================  
+   02. 左侧固定导航栏  
+   ================================================== */  
+.sidebar {  
+    width: var(--sidebar-width);  
+    height: 100vh;  
+    position: fixed;  
+    left: 0;  
+    top: 0;  
+    z-index: 1000;  
+  
+    background: var(--ink);  
+    color: var(--ivory);  
+  
+    padding: 45px 30px;  
+    display: flex;  
+    flex-direction: column;  
+    justify-content: space-between;  
+  
+    border-right: 1px solid rgba(181,138,84,.2);  
+}  
+  
+.brand {  
+    padding-bottom: 35px;  
+    border-bottom: 1px solid rgba(181,138,84,.35);  
+}  
+  
+.brand h1 {  
+    font-family: var(--font-title);  
+    font-size: 23px;  
+    font-weight: 500;  
+    letter-spacing: 4px;  
+}  
+  
+.brand p {  
+    margin-top: 10px;  
+    font-size: 10px;  
+    letter-spacing: 3px;  
+    color: var(--gold);  
+}  
+  
+.main-navigation ul {  
+    list-style: none;  
+}  
+  
+.main-navigation li {  
+    margin: 8px 0;  
+}  
+  
+.main-navigation a {  
+    display: block;  
+    padding: 11px 12px;  
+    font-size: 14px;  
+    letter-spacing: 2px;  
+    color: rgba(245,242,235,.65);  
+    border-left: 2px solid transparent;  
+    transition: .3s ease;  
+}  
+  
+.main-navigation a:hover,  
+.main-navigation a.active {  
+    color: var(--ivory);  
+    border-left-color: var(--teal);  
+    background: rgba(28,120,130,.12);  
+    padding-left: 20px;  
+}  
+  
+.sidebar-footer {  
+    font-size: 11px;  
+    letter-spacing: 1px;  
+    color: rgba(245,242,235,.4);  
+    border-top: 1px solid rgba(181,138,84,.25);  
+    padding-top: 20px;  
+}  
+  
+  
+/* ==================================================  
+   03. 右侧主内容区域  
+   ================================================== */  
+.main-content {  
+    margin-left: var(--sidebar-width);  
+    min-height: 100vh;  
+}  
+  
+.section-padding {  
+    padding: 100px 7%;  
+}  
+  
+.section-heading {  
+    margin-bottom: 55px;  
+}  
+  
+.section-heading .en {  
+    color: var(--teal);  
+    font-size: 11px;  
+    letter-spacing: 5px;  
+    margin-bottom: 14px;  
+}  
+  
+.section-heading h2 {  
+    font-family: var(--font-title);  
+    font-weight: 500;  
+    font-size: clamp(30px, 4vw, 48px);  
+    letter-spacing: 5px;  
+}  
+  
+.section-heading p {  
+    margin-top: 16px;  
+    font-size: 14px;  
+    color: #777;  
+    max-width: 600px;  
+}  
+  
+  
+/* ==================================================  
+   04. 首屏横幅  
+   ================================================== */  
+.hero {  
+    min-height: 90vh;  
+    position: relative;  
+    overflow: hidden;  
+  
+    display: flex;  
+    align-items: center;  
+    padding: 8%;  
+  
+    color: var(--ivory);  
+    background: var(--ink);  
+}  
+  
+.hero-bg {  
+    position: absolute;  
+    inset: 0;  
+}  
+  
+.hero-bg img {  
+    width: 100%;  
+    height: 100%;  
+    object-fit: cover;  
+    opacity: .55;  
+}  
+  
+.hero::after {  
+    content: "";  
+    position: absolute;  
+    inset: 0;  
+    background: linear-gradient(  
+        90deg,  
+        rgba(17,23,25,.95),  
+        rgba(17,23,25,.5),  
+        rgba(17,23,25,.1)  
+    );  
+}  
+  
+.hero-content {  
+    position: relative;  
+    z-index: 2;  
+    max-width: 700px;  
+}  
+  
+.hero-label {  
+    color: var(--gold);  
+    letter-spacing: 6px;  
+    font-size: 12px;  
+    margin-bottom: 25px;  
+}  
+  
+.hero h2 {  
+    font-family: var(--font-title);  
+    font-weight: 400;  
+    font-size: clamp(38px, 6vw, 82px);  
+    line-height: 1.5;  
+    letter-spacing: 12px;  
+}  
+  
+.hero-description {  
+    margin-top: 25px;  
+    color: rgba(245,242,235,.75);  
+    letter-spacing: 4px;  
+    font-size: 15px;  
+}  
+  
+.hero-btn {  
+    display: inline-block;  
+    margin-top: 45px;  
+    border: 1px solid var(--gold);  
+    color: var(--ivory);  
+    padding: 12px 35px;  
+    letter-spacing: 3px;  
+    font-size: 13px;  
+    transition: .3s;  
+}  
+  
+.hero-btn:hover {  
+    background: var(--gold);  
+    color: var(--ink);  
+}  
+  
+.hero-decor {  
+    position: absolute;  
+    right: 8%;  
+    bottom: 8%;  
+    z-index: 2;  
+    font-family: var(--font-title);  
+    color: rgba(245,242,235,.3);  
+    font-size: 14px;  
+    letter-spacing: 8px;  
+    writing-mode: vertical-rl;  
+}  
+  
+  
+/* ==================================================  
+   05. 圆形分类入口  
+   ================================================== */  
+.category-grid {  
+    display: grid;  
+    grid-template-columns: repeat(4, 1fr);  
+    gap: 35px;  
+}  
+  
+.category-card {  
+    text-align: center;  
+}  
+  
+.category-image {  
+    width: 100%;  
+    aspect-ratio: 1 / 1;  
+    overflow: hidden;  
+    border-radius: 50%;  
+    position: relative;  
+    border: 1px solid rgba(181,138,84,.4);  
+}  
+  
+.category-image img {  
+    height: 100%;  
+    transition: transform .6s ease;  
+}  
+  
+.category-card:hover img {  
+    transform: scale(1.08);  
+}  
+  
+.category-card h3 {  
+    margin-top: 22px;  
+    font-family: var(--font-title);  
+    font-weight: 400;  
+    letter-spacing: 3px;  
+    font-size: 20px;  
+}  
+  
+.category-card p {  
+    margin-top: 8px;  
+    font-size: 12px;  
+    color: #888;  
+    letter-spacing: 2px;  
+}  
+  
+  
+/* ==================================================  
+   06. 制作工序卡片  
+   ================================================== */  
+.craft-section {  
+    background: #EBE7DF;  
+}  
+  
+.craft-grid {  
+    display: grid;  
+    grid-template-columns: repeat(4, 1fr);  
+    gap: 20px;  
+}  
+  
+.craft-card {  
+    background: var(--ivory);  
+    padding-bottom: 25px;  
+    transition: transform .35s ease;  
+}  
+  
+.craft-card:hover {  
+    transform: translateY(-6px);  
+}  
+  
+.craft-card img {  
+    aspect-ratio: 3 / 4;  
+    transition: transform .6s;  
+}  
+  
+.craft-card .image-wrap {  
+    overflow: hidden;  
+}  
+  
+.craft-card:hover img {  
+    transform: scale(1.04);  
+}  
+  
+.craft-card .card-text {  
+    padding: 20px;  
+}  
+  
+.craft-card .number {  
+    color: var(--gold);  
+    font-size: 12px;  
+    letter-spacing: 2px;  
+}  
+  
+.craft-card h3 {  
+    margin-top: 10px;  
+    font-family: var(--font-title);  
+    font-size: 21px;  
+    font-weight: 400;  
+}  
+  
+.craft-card p {  
+    font-size: 13px;  
+    color: #888;  
+    margin-top: 10px;  
+}  
+  
+  
+/* ==================================================  
+   07. 纹样档案网格  
+   ================================================== */  
+.pattern-grid {  
+    display: grid;  
+    grid-template-columns: repeat(4, 1fr);  
+    gap: 18px;  
+}  
+  
+.pattern-card {  
+    position: relative;  
+    overflow: hidden;  
+    background: var(--ink);  
+}  
+  
+.pattern-card img {  
+    aspect-ratio: 1 / 1;  
+    opacity: .85;  
+    transition: .5s;  
+}  
+  
+.pattern-card:hover img {  
+    transform: scale(1.08);  
+    opacity: 1;  
+}  
+  
+.pattern-card .pattern-info {  
+    padding: 18px;  
+    background: var(--ink);  
+    color: var(--ivory);  
+}  
+  
+.pattern-card h3 {  
+    font-family: var(--font-title);  
+    font-weight: 400;  
+    letter-spacing: 3px;  
+}  
+  
+.pattern-card p {  
+    font-size: 12px;  
+    color: var(--gold);  
+    margin-top: 5px;  
+}  
+  
+  
+/* ==================================================  
+   08. 作品赏析卡片  
+   ================================================== */  
+.gallery-section {  
+    background: var(--ink);  
+    color: var(--ivory);  
+}  
+  
+.gallery-section .section-heading h2 {  
+    color: var(--ivory);  
+}  
+  
+.gallery-section .section-heading p {  
+    color: rgba(245,242,235,.55);  
+}  
+  
+.gallery-section .section-heading .en {  
+    color: var(--gold);  
+}  
+  
+.gallery-grid {  
+    display: grid;  
+    grid-template-columns: repeat(3, 1fr);  
+    gap: 25px;  
+}  
+  
+.gallery-card {  
+    position: relative;  
+    overflow: hidden;  
+}  
+  
+.gallery-card .gallery-image {  
+    overflow: hidden;  
+}  
+  
+.gallery-card img {  
+    aspect-ratio: 4 / 5;  
+    transition: transform .7s ease;  
+}  
+  
+.gallery-card:hover img {  
+    transform: scale(1.04);  
+}  
+  
+.gallery-card h3 {  
+    margin-top: 18px;  
+    font-family: var(--font-title);  
+    font-weight: 400;  
+    letter-spacing: 3px;  
+    font-size: 20px;  
+}  
+  
+.gallery-card p {  
+    color: var(--gold);  
+    font-size: 12px;  
+    margin-top: 6px;  
+}  
+  
+  
+/* ==================================================  
+   09. 传承人物模块  
+   ================================================== */  
+.heritage-layout {  
+    display: grid;  
+    grid-template-columns: 1.1fr 1fr;  
+    gap: 70px;  
+    align-items: center;  
+}  
+  
+.heritage-image img {  
+    aspect-ratio: 4 / 5;  
+}  
+  
+.heritage-text h3 {  
+    font-family: var(--font-title);  
+    font-weight: 400;  
+    font-size: 32px;  
+    letter-spacing: 5px;  
+}  
+  
+.heritage-text .subtitle {  
+    color: var(--gold);  
+    letter-spacing: 3px;  
+    font-size: 12px;  
+    margin-top: 15px;  
+}  
+  
+.heritage-text p {  
+    color: #777;  
+    margin-top: 25px;  
+    font-size: 14px;  
+    line-height: 2.3;  
+}  
+  
+.text-link {  
+    display: inline-block;  
+    margin-top: 30px;  
+    color: var(--teal);  
+    letter-spacing: 3px;  
+    font-size: 13px;  
+    border-bottom: 1px solid var(--teal);  
+    padding-bottom: 5px;  
+}  
+  
+  
+/* ==================================================  
+   10. 影像体验模块  
+   ================================================== */  
+.video-section {  
+    background: #EBE7DF;  
+}  
+  
+.video-grid {  
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);  
+    gap: 25px;  
+}  
+  
+.video-card {  
+    position: relative;  
+}  
+  
+.video-card img {  
+    aspect-ratio: 16 / 9;  
+}  
+  
+.video-card h3 {  
+    margin-top: 18px;  
+    font-family: var(--font-title);  
+    font-weight: 400;  
+    letter-spacing: 3px;  
+}  
+  
+.video-card p {  
+    font-size: 13px;  
+    color: #888;  
+    margin-top: 8px;  
+}  
+  
+.play-mark {  
+    position: absolute;  
+    left: 50%;  
+    top: 35%;  
+    transform: translate(-50%, -50%);  
+  
+    width: 58px;  
+    height: 58px;  
+    border-radius: 50%;  
+    background: rgba(17,23,25,.65);  
+    color: var(--ivory);  
+  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+  
+    border: 1px solid rgba(245,242,235,.7);  
+    transition: .3s;  
+}  
+  
+.video-card:hover .play-mark {  
+    background: var(--teal);  
+    transform: translate(-50%, -50%) scale(1.08);  
+}  
+  
+  
+/* ==================================================  
+   11. 页脚  
+   ================================================== */  
+.site-footer {  
+    background: var(--ink);  
+    color: var(--ivory);  
+    text-align: center;  
+    padding: 75px 30px;  
+}  
+  
+.site-footer h2 {  
+    font-family: var(--font-title);  
+    font-size: 28px;  
+    font-weight: 400;  
+    letter-spacing: 6px;  
+}  
+  
+.site-footer p {  
+    font-size: 12px;  
+    color: rgba(245,242,235,.5);  
+    margin-top: 12px;  
+}  
+  
+.footer-nav {  
+    display: flex;  
+    justify-content: center;  
+    flex-wrap: wrap;  
+    gap: 25px;  
+    margin-top: 35px;  
+}  
+  
+.footer-nav a {  
+    font-size: 12px;  
+    color: rgba(245,242,235,.65);  
+    transition: color .3s;  
+}  
+  
+.footer-nav a:hover {  
+    color: var(--gold);  
+}  
+  
+  
+/* ==================================================  
+   12. 图片放大查看器  
+   ================================================== */  
+.image-viewer {  
+    position: fixed;  
+    inset: 0;  
+    z-index: 2000;  
+  
+    background: rgba(17,23,25,.96);  
+  
+    display: none;  
+    justify-content: center;  
+    align-items: center;  
+  
+    padding: 30px;  
+}  
+  
+.image-viewer.show {  
+    display: flex;  
+}  
+  
+.image-viewer img {  
+    max-width: 90vw;  
+    max-height: 85vh;  
+    width: auto;  
+    height: auto;  
+    object-fit: contain;  
+    cursor: zoom-out;  
+    animation: viewerFade .3s ease;  
+}  
+  
+.viewer-close {  
+    position: absolute;  
+    top: 25px;  
+    right: 35px;  
+    color: var(--ivory);  
+    font-size: 36px;  
+    background: none;  
+    border: none;  
+    cursor: pointer;  
+}  
+  
+@keyframes viewerFade {  
+    from {  
+        opacity: 0;  
+        transform: scale(.97);  
+    }  
+    to {  
+        opacity: 1;  
+        transform: scale(1);  
+    }  
+}  
+  
+  
+/* ==================================================  
+   13. 滚动进入动画  
+   ================================================== */  
+.reveal {  
+    opacity: 0;  
+    transform: translateY(25px);  
+    transition: opacity .8s ease, transform .8s ease;  
+}  
+  
+.reveal.visible {  
+    opacity: 1;  
+    transform: translateY(0);  
+}  
+  
+  
+/* ==================================================  
+   14. 移动端汉堡按钮  
+   ================================================== */  
+.menu-toggle {  
+    display: none;  
+    position: fixed;  
+    right: 20px;  
+    top: 18px;  
+    z-index: 1200;  
+  
+    width: 45px;  
+    height: 45px;  
+    background: var(--ink);  
+    color: var(--ivory);  
+    border: 1px solid rgba(181,138,84,.5);  
+    cursor: pointer;  
+    font-size: 23px;  
+}  
+  
+  
+/* ==================================================  
+   15. 响应式布局  
+   ================================================== */  
+@media (max-width: 1100px) {  
+  
+    :root {  
+        --sidebar-width: 220px;  
+    }  
+  
+    .category-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 30px;  
+    }  
+  
+    .craft-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+    }  
+  
+    .pattern-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+    }  
+  
+    .gallery-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+    }  
+  
+    .section-padding {  
+        padding: 75px 6%;  
+    }  
+}  
+  
+  
+@media (max-width: 768px) {  
+  
+    /* 移动端侧栏改为抽屉式菜单 */  
+    .sidebar {  
+        width: 270px;  
+        transform: translateX(-100%);  
+        transition: transform .35s ease;  
+        padding: 35px 25px;  
+    }  
+  
+    .sidebar.open {  
+        transform: translateX(0);  
+    }  
+  
+    /* 移动端菜单按钮显示 */  
+    .menu-toggle {  
+        display: block;  
+    }  
+  
+    /* 移动端主内容不再预留侧栏宽度 */  
+    .main-content {  
+        margin-left: 0;  
+    }  
+  
+    /* 移动端遮罩 */  
+    .menu-overlay {  
+        position: fixed;  
+        inset: 0;  
+        background: rgba(17,23,25,.6);  
+        z-index: 900;  
+        display: none;  
+    }  
+  
+    .menu-overlay.show {  
+        display: block;  
+    }  
+  
+    .hero {  
+        min-height: 82vh;  
+        padding: 8%;  
+    }  
+  
+    .hero h2 {  
+        font-size: 42px;  
+        letter-spacing: 7px;  
+    }  
+  
+    .hero-description {  
+        letter-spacing: 2px;  
+        font-size: 13px;  
+    }  
+  
+    .hero-decor {  
+        display: none;  
+    }  
+  
+    .section-padding {  
+        padding: 65px 7%;  
+    }  
+  
+    .section-heading {  
+        margin-bottom: 35px;  
+    }  
+  
+    .section-heading h2 {  
+        font-size: 32px;  
+        letter-spacing: 3px;  
+    }  
+  
+    .category-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 25px 18px;  
+    }  
+  
+    .category-card h3 {  
+        font-size: 18px;  
+    }  
+  
+    .craft-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 12px;  
+    }  
+  
+    .craft-card .card-text {  
+        padding: 13px;  
+    }  
+  
+    .craft-card h3 {  
+        font-size: 18px;  
+    }  
+  
+    .craft-card p {  
+        font-size: 12px;  
+    }  
+  
+    .pattern-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 12px;  
+    }  
+  
+    .gallery-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 15px;  
+    }  
+  
+    .gallery-card h3 {  
+        font-size: 16px;  
+    }  
+  
+    .heritage-layout {  
+        grid-template-columns: 1fr;  
+        gap: 30px;  
+    }  
+  
+    .heritage-text h3 {  
+        font-size: 27px;  
+    }  
+  
+    .video-grid {  
+        grid-template-columns: 1fr;  
+    }  
+  
+    .site-footer {  
+        padding: 55px 20px;  
+    }  
+  
+    .footer-nav {  
+        gap: 15px;  
+    }  
+}  
+  
+  
+/* ==================================================  
+   16. 小屏手机适配  
+   ================================================== */  
+@media (max-width: 400px) {  
+  
+    .hero h2 {  
+        font-size: 34px;  
+    }  
+  
+    .category-grid {  
+        gap: 18px 12px;  
+    }  
+  
+    .craft-grid {  
+        gap: 10px;  
+    }  
+  
+    .gallery-grid {  
+        gap: 10px;  
+    }  
+  
+    .section-heading h2 {  
+        font-size: 28px;  
+    }  
+}  
+  
+  
+/* ==================================================  
+   17. 减少动态效果设置  
+   ================================================== */  
+@media (prefers-reduced-motion: reduce) {  
+    html {  
+        scroll-behavior: auto;  
+    }  
+  
+    *,  
+    *::before,  
+    *::after {  
+        animation-duration: .01ms !important;  
+        transition-duration: .01ms !important;  
+    }  
+}  
+</style>  
+</head>  
+  
+<body>  
+  
+<!-- ==================================================  
+     移动端菜单按钮  
+     ================================================== -->  
+<button class="menu-toggle" id="menuToggle" aria-label="打开导航菜单" aria-expanded="false">  
+    ☰  
+</button>  
+  
+<!-- 移动端侧栏遮罩 -->  
+<div class="menu-overlay" id="menuOverlay"></div>  
+  
+  
+<!-- ==================================================  
+     左侧固定导航  
+     ================================================== -->  
+<aside class="sidebar" id="sidebar">  
+  
+    <!-- 品牌标识 -->  
+    <div class="brand">  
+        <h1>珠光入灯 · 匠艺传</h1>  
+        <p>GLASS BEAD LANTERN</p>  
+    </div>  
+  
+    <!-- 导航锚点 -->  
+    <nav class="main-navigation">  
+        <ul>  
+            <li><a href="#home" class="active">首页</a></li>  
+            <li><a href="#culture">认识琉璃珠灯</a></li>  
+            <li><a href="#craft">制作技艺</a></li>  
+            <li><a href="#patterns">纹样档案</a></li>  
+            <li><a href="#gallery">作品赏析</a></li>  
+            <li><a href="#heritage">传承人物</a></li>  
+            <li><a href="#video">影像体验</a></li>  
+        </ul>  
+    </nav>  
+  
+    <!-- 侧栏底部 -->  
+    <div class="sidebar-footer">  
+        <p>非遗文化数字档案</p>  
+        <p>© 珠光入灯 · 匠艺传</p>  
+    </div>  
+  
+</aside>  
+  
+  
+<!-- ==================================================  
+     右侧主内容区  
+     ================================================== -->  
+<main class="main-content">  
+  
+  
+    <!-- ==================================================  
+         01. 首页  
+         ================================================== -->  
+    <section id="home">  
+  
+        <!-- 首屏 Banner -->  
+        <header class="hero">  
+  
+            <div class="hero-bg">  
+                <img  
+                    src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=2000&q=85"  
+                    alt="东方灯影与光影氛围">  
+            </div>  
+  
+            <div class="hero-content reveal">  
+                <p class="hero-label">GLASS BEAD LANTERN · HERITAGE</p>  
+                <h2>珠光入灯<br>匠艺传</h2>  
+                <p class="hero-description">一珠凝光，一灯承艺</p>  
+                <a href="#culture" class="hero-btn">开启珠灯档案</a>  
+            </div>  
+  
+            <div class="hero-decor">东方光影 · 琉璃之美</div>  
+        </header>  
+  
+  
+        <!-- 圆形分类入口 -->  
+        <section class="section-padding">  
+            <div class="section-heading reveal">  
+                <p class="en">EXPLORE THE ART OF LANTERN</p>  
+                <h2>探索珠灯文化</h2>  
+                <p>循着光影，走进琉璃珠灯的文化与技艺</p>  
+            </div>  
+  
+            <div class="category-grid">  
+  
+                <a href="#culture" class="category-card reveal">  
+                    <div class="category-image">  
+                        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80" alt="琉璃文化">  
+                    </div>  
+                    <h3>琉璃之源</h3>  
+                    <p>认识琉璃珠灯</p>  
+                </a>  
+  
+                <a href="#craft" class="category-card reveal">  
+                    <div class="category-image">  
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80" alt="传统制作技艺">  
+                    </div>  
+                    <h3>匠艺之序</h3>  
+                    <p>探寻制作技艺</p>  
+                </a>  
+  
+                <a href="#patterns" class="category-card reveal">  
+                    <div class="category-image">  
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="传统纹样">  
+                    </div>  
+                    <h3>纹样之美</h3>  
+                    <p>解读传统纹样</p>  
+                </a>  
+  
+                <a href="#gallery" class="category-card reveal">  
+                    <div class="category-image">  
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" alt="灯艺作品">  
+                    </div>  
+                    <h3>珠灯之赏</h3>  
+                    <p>欣赏艺术作品</p>  
+                </a>  
+  
+            </div>  
+        </section>  
+  
+  
+        <!-- 首页制作工序 -->  
+        <section class="section-padding craft-section">  
+            <div class="section-heading reveal">  
+                <p class="en">CRAFT PROCESS</p>  
+                <h2>一灯成艺</h2>  
+                <p>从材料到成灯，感受手工技艺中的温度</p>  
+            </div>  
+  
+            <div class="craft-grid">  
+  
+                <article class="craft-card reveal">  
+                    <div class="image-wrap">  
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80" alt="制作材料准备">  
+                    </div>  
+                    <div class="card-text">  
+                        <span class="number">01 / MATERIAL</span>  
+                        <h3>材料准备</h3>  
+                        <p>认识琉璃材料与制作工具</p>  
+                    </div>  
+                </article>  
+  
+                <article class="craft-card reveal">  
+                    <div class="image-wrap">  
+                        <img src="https://images.unsplash.com/photo-1490312278394-bb9e9e0a5a6d?auto=format&fit=crop&w=800&q=80" alt="琉璃成形工艺">  
+                    </div>  
+                    <div class="card-text">  
+                        <span class="number">02 / FORMING</span>  
+                        <h3>琉璃成形</h3>  
+                        <p>塑造琉璃珠体的形态</p>  
+                    </div>  
+                </article>  
+  
+                <article class="craft-card reveal">  
+                    <div class="image-wrap">  
+                        <img src="https://images.unsplash.com/photo-1490312278394-bb9e9e0a5a6d?auto=format&fit=crop&w=800&q=80" alt="珠体加工细节">  
+                    </div>  
+                    <div class="card-text">  
+                        <span class="number">03 / DETAIL</span>  
+                        <h3>珠体加工</h3>  
+                        <p>处理色彩、纹理与珠体细节</p>  
+                    </div>  
+                </article>  
+  
+                <article class="craft-card reveal">  
+                    <div class="image-wrap">  
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" alt="珠灯结构组装">  
+                    </div>  
+                    <div class="card-text">  
+                        <span class="number">04 / ASSEMBLY</span>  
+                        <h3>组装成灯</h3>  
+                        <p>将珠体组合为完整灯艺作品</p>  
+                    </div>  
+                </article>  
+  
+            </div>  
+        </section>  
+  
+  
+        <!-- 首页纹样展示 -->  
+        <section class="section-padding">  
+            <div class="section-heading reveal">  
+                <p class="en">TRADITIONAL PATTERN ARCHIVE</p>  
+                <h2>纹藏于珠</h2>  
+                <p>传统纹样承载着东方文化的祝愿与审美</p>  
+            </div>  
+  
+            <div class="pattern-grid">  
+  
+                <article class="pattern-card reveal">  
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="花卉纹样">  
+                    <div class="pattern-info">  
+                        <h3>花卉纹</h3>  
+                        <p>自然 · 生机</p>  
+                    </div>  
+                </article>  
+  
+                <article class="pattern-card reveal">  
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80" alt="云纹图案">  
+                    <div class="pattern-info">  
+                        <h3>祥云纹</h3>  
+                        <p>吉祥 · 如意</p>  
+                    </div>  
+                </article>  
+  
+                <article class="pattern-card reveal">  
+                    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" alt="几何纹样">  
+                    <div class="pattern-info">  
+                        <h3>几何纹</h3>  
+                        <p>秩序 · 连续</p>  
+                    </div>  
+                </article>  
+  
+                <article class="pattern-card reveal">  
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80" alt="吉祥装饰纹样">  
+                    <div class="pattern-info">  
+                        <h3>吉祥纹</h3>  
+                        <p>祝福 · 寓意</p>  
+                    </div>  
+                </article>  
+  
+            </div>  
+        </section>  
+  
+  
+        <!-- 首页作品预览 -->  
+        <section class="section-padding gallery-section">  
+            <div class="section-heading reveal">  
+                <p class="en">SELECTED ARTWORKS</p>  
+                <h2>珠光映艺</h2>  
+                <p>光影之间，凝聚传统手工艺术之美</p>  
+            </div>  
+  
+            <div class="gallery-grid">  
+  
+                <article class="gallery-card reveal">  
+                    <div class="gallery-image">  
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=85" alt="琉璃珠灯艺术作品一">  
+                    </div>  
+                    <h3>流光 · 壹</h3>  
+                    <p>珠光映影 / 东方雅韵</p>  
+                </article>  
+  
+                <article class="gallery-card reveal">  
+                    <div class="gallery-image">  
+                        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85" alt="琉璃珠灯艺术作品二">  
+                    </div>  
+                    <h3>流光 · 贰</h3>  
+                    <p>色彩构成 / 琉璃之美</p>  
+                </article>  
+  
+                <article class="gallery-card reveal">  
+                    <div class="gallery-image">  
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85" alt="琉璃珠灯艺术作品三">  
+                    </div>  
+                    <h3>流光 · 叁</h3>  
+                    <p>传统装饰 / 当代设计</p>  
+                </article>  
+  
+            </div>  
+        </section>  
+  
+  
+        <!-- 首页传承故事 -->  
+        <section class="section-padding">  
+            <div class="heritage-layout">  
+  
+                <div class="heritage-image reveal">  
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85" alt="传统手工艺制作场景">  
+                </div>  
+  
+                <div class="heritage-text reveal">  
+                    <div class="section-heading">  
+                        <p class="en">HERITAGE & INHERITANCE</p>  
+                        <h2>灯火相传</h2>  
+                    </div>  
+  
+                    <h3>一份技艺，一段传承</h3>  
+                    <p class="subtitle">THE CRAFTSMANSHIP OF TIME</p>  
+  
+                    <p>  
+                        一件作品的诞生，凝聚着材料的理解、手工的细致  
+                        与时间的沉淀。琉璃珠灯不仅是光与色的艺术，  
+                        更是传统技艺与文化记忆的载体。  
+                    </p>  
+  
+                    <p>  
+                        在匠人的手中，古老工艺不断延续，  
+                        传统审美也在新的时代中焕发光彩。  
+                    </p>  
+  
+                    <a href="#heritage" class="text-link">阅读传承故事 →</a>  
+                </div>  
+  
+            </div>  
+        </section>  
+  
+    </section>  
+  
+  
+    <!-- ==================================================  
+         02. 认识琉璃珠灯  
+         ================================================== -->  
+    <section id="culture" class="section-padding">  
+  
+        <div class="section-heading reveal">  
+            <p class="en">KNOW THE GLASS BEAD LANTERN</p>  
+            <h2>认识琉璃珠灯</h2>  
+            <p>从材料、历史与文化角度，认识珠灯的艺术价值</p>  
+        </div>  
+  
+        <div class="heritage-layout">  
+  
+            <div class="heritage-image reveal">  
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=85" alt="琉璃灯艺文化展示">  
+            </div>  
+  
+            <div class="heritage-text reveal">  
+                <h3>琉璃之美</h3>  
+                <p class="subtitle">GLASS · LIGHT · ART</p>  
+  
+                <p>  
+                    琉璃以其晶莹质感、丰富色彩与独特光学效果，  
+                    在传统艺术与装饰文化中形成了具有辨识度的审美表达。  
+                </p>  
+  
+                <p>  
+                    琉璃珠灯通过珠体、结构与光源之间的组合，  
+                    将材料之美、造型之美与光影之美融为一体。  
+                </p>  
+            </div>  
+  
+        </div>  
+  
+        <!-- 琉璃材料 -->  
+        <div style="margin-top:70px;" class="reveal">  
+            <div class="section-heading">  
+                <h2>琉璃之材</h2>  
+            </div>  
+  
+            <div class="gallery-grid">  
+                <article class="gallery-card">  
+                    <div class="gallery-image">  
+                        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80" alt="琉璃色彩">  
+                    </div>  
+                    <h3>色彩之韵</h3>  
+                    <p>丰富色彩的视觉表达</p>  
+                </article>  
+  
+                <article class="gallery-card">  
+                    <div class="gallery-image">  
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80" alt="琉璃光泽">  
+                    </div>  
+                    <h3>光泽之美</h3>  
+                    <p>透光与折射的材质表现</p>  
+                </article>  
+  
+                <article class="gallery-card">  
+                    <div class="gallery-image">  
+                        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80" alt="传统装饰艺术">  
+                    </div>  
+                    <h3>造型之艺</h3>  
+                    <p>材质与装饰的组合构成</p>  
+                </article>  
+            </div>  
+        </div>  
+  
+    </section>  
+  
+  
+    <!-- ==================================================  
+         03. 制作技艺  
+         ================================================== -->  
+    <section id="craft" class="section-padding craft-section">  
+  
+        <div class="section-heading reveal">  
+            <p class="en">CRAFT & PROCESS</p>  
+            <h2>制作技艺</h2>  
+            <p>一颗琉璃珠，从材料到成品的工艺探索</p>  
+        </div>  
+  
+        <div class="craft-grid">  
+  
+            <article class="craft-card reveal">  
+                <div class="image-wrap">  
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=85" alt="材料准备">  
+                </div>  
+                <div class="card-text">  
+                    <span class="number">01 / MATERIAL</span>  
+                    <h3>材料准备</h3>  
+                    <p>准备制作所需的材料与工具</p>  
+                </div>  
+            </article>  
+  
+            <article class="craft-card reveal">  
+                <div class="image-wrap">  
+                    <img src="https://images.unsplash.com/photo-1490312278394-bb9e9e0a5a6d?auto=format&fit=crop&w=900&q=85" alt="珠体成形">  
+                </div>  
+                <div class="card-text">  
+                    <span class="number">02 / FORMING</span>  
+                    <h3>珠体成形</h3>  
+                    <p>塑造珠体形态与基础结构</p>  
+                </div>  
+            </article>  
+  
+            <article class="craft-card reveal">  
+                <div class="image-wrap">  
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=85" alt="珠体装饰加工">  
+                </div>  
+                <div class="card-text">  
+                    <span class="number">03 / DECORATION</span>  
+                    <h3>装饰加工</h3>  
+                    <p>处理珠体纹理、色彩与细节</p>  
+                </div>  
+            </article>  
+  
+            <article class="craft-card reveal">  
+                <div class="image-wrap">  
+                    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85" alt="珠灯组合">  
+                </div>  
+                <div class="card-text">  
+                    <span class="number">04 / ASSEMBLY</span>  
+                    <h3>组合成灯</h3>  
+            <p>结构组合与整体造型呈现</p>  
+                </div>  
+            </article>  
+  
+        </div>  
+  
+        <!-- 工艺细节 -->  
+        <div style="margin-top:60px;" class="reveal">  
+            <div class="section-heading">  
+                <h2>匠艺细节</h2>  
+                <p>从局部纹理到整体构成，感受手工制作的精细</p>  
+            </div>  
+  
+            <div class="pattern-grid">  
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80" alt="琉璃工艺细节一">  
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="琉璃工艺细节二">  
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80" alt="琉璃工艺细节三">  
+                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" alt="琉璃工艺细节四">  
+            </div>  
+        </div>  
+  
+    </section>  
+  
+  
+    <!-- ==================================================  
+         04. 纹样档案  
+         ================================================== -->  
+    <section id="patterns" class="section-padding">  
+  
+        <div class="section-heading reveal">  
+            <p class="en">PATTERN ARCHIVE</p>  
+            <h2>纹样档案</h2>  
+            <p>记录传统图形，探寻纹样背后的文化寓意</p>  
+        </div>  
+  
+        <div class="pattern-grid">  
+  
+            <article class="pattern-card reveal">  
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="莲花纹">  
+                <div class="pattern-info">  
+                    <h3>莲花纹</h3>  
+                    <p>清雅 · 纯净</p>  
+                </div>  
+            </article>  
+  
+            <article class="pattern-card reveal">  
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80" alt="祥云纹">  
+                <div class="pattern-info">  
+                    <h3>祥云纹</h3>  
+                    <p>祥瑞 · 美好</p>  
+                </div>  
+            </article>  
+  
+            <article class="pattern-card reveal">  
+                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" alt="如意纹">  
+                <div class="pattern-info">  
+                    <h3>如意纹</h3>  
+                    <p>顺遂 · 吉祥</p>  
+                </div>  
+            </article>  
+  
+            <article class="pattern-card reveal">  
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80" alt="回纹">  
+                <div class="pattern-info">  
+                    <h3>回纹</h3>  
+                    <p>绵延 · 连续</p>  
+                </div>  
+            </article>  
+  
+        </div>  
+  
+        <!-- 纹样详细说明 -->  
+        <div style="margin-top:70px;" class="reveal">  
+            <div class="section-heading">  
+                <h2>纹样图鉴</h2>  
+            </div>  
+  
+            <div class="heritage-layout">  
+                <div class="heritage-image">  
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=85" alt="传统纹样细节">  
+                </div>  
+  
+                <div class="heritage-text">  
+                    <h3>传统纹样的文化表达</h3>  
+                    <p class="subtitle">PATTERN · SYMBOL · CULTURE</p>  
+                    <p>  
+                        传统纹样不仅具有装饰功能，也通过自然形态、  
+                        几何结构与象征符号表达人们对美好生活的向往。  
+                    </p>  
+                    <p>  
+                        纹样在灯艺中的运用，使装饰图形与光影相互融合，  
+                        形成独特的视觉层次。  
+                    </p>  
+                </div>  
+            </div>  
+  
+        </div>  
+  
+    </section>  
+  
+  
+    <!-- ==================================================  
+         05. 作品赏析  
+         ================================================== -->  
+    <section id="gallery" class="section-padding gallery-section">  
+  
+        <div class="section-heading reveal">  
+            <p class="en">ARTWORK COLLECTION</p>  
+            <h2>作品赏析</h2>  
+            <p>以作品为媒介，呈现珠灯的色彩、结构与艺术语言</p>  
+        </div>  
+  
+        <div class="gallery-grid">  
+  
+            <article class="gallery-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=85" alt="珠灯作品一">  
+                </div>  
+                <h3>东方流光</h3>  
+                <p>传统美学 / 灯艺收藏</p>  
+            </article>  
+  
+            <article class="gallery-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85" alt="珠灯作品二">  
+                </div>  
+                <h3>琉璃映色</h3>  
+                <p>色彩表达 / 材料艺术</p>  
+            </article>  
+  
+            <article class="gallery-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85" alt="珠灯作品三">  
+                </div>  
+                <h3>古韵新生</h3>  
+                <p>当代设计 / 传统工艺</p>  
+            </article>  
+  
+            <article class="gallery-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85" alt="珠灯作品四">  
+                </div>  
+                <h3>珠华凝光</h3>  
+                <p>光影艺术 / 手工之美</p>  
+            </article>  
+  
+            <article class="gallery-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1490312278394-bb9e9e0a5a6d?auto=format&fit=crop&w=1000&q=85" alt="珠灯作品五">  
+                </div>  
+                <h3>琉光雅集</h3>  
+                <p>传统装饰 / 造型美学</p>  
+            </article>  
+  
+            <article class="gallery-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=85" alt="珠灯作品六">  
+                </div>  
+                <h3>灯影千华</h3>  
+                <p>文化传承 / 艺术表达</p>  
+            </article>  
+  
+        </div>  
+  
+    </section>  
+  
+  
+    <!-- ==================================================  
+         06. 传承人物  
+         ================================================== -->  
+    <section id="heritage" class="section-padding">  
+  
+        <div class="section-heading reveal">  
+            <p class="en">HERITAGE & INHERITANCE</p>  
+            <h2>传承人物</h2>  
+            <p>记录匠人故事，让传统技艺在时代中延续</p>  
+        </div>  
+  
+        <div class="heritage-layout">  
+  
+            <div class="heritage-image reveal">  
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85" alt="传统工艺匠人">  
+            </div>  
+  
+            <div class="heritage-text reveal">  
+                <h3>守艺于心</h3>  
+                <p class="subtitle">CRAFTSMANSHIP & INHERITANCE</p>  
+  
+                <p>  
+                    每一项传统技艺的延续，都离不开匠人的坚守。  
+                    从初识材料，到熟练掌握工序，手工艺术背后  
+                    是日复一日的积累与实践。  
+                </p>  
+  
+                <p>  
+                    通过人物故事，记录技艺的传承、工艺的变化，  
+                    以及传统艺术与当代生活之间新的连接。  
+                </p>  
+  
+                <a href="#video" class="text-link">观看匠人影像 →</a>  
+            </div>  
+  
+        </div>  
+  
+    </section>  
+  
+  
+    <!-- ==================================================  
+         07. 影像体验  
+         ================================================== -->  
+    <section id="video" class="section-padding video-section">  
+  
+        <div class="section-heading reveal">  
+            <p class="en">VISUAL EXPERIENCE</p>  
+            <h2>影像体验</h2>  
+            <p>以影像记录技艺，以光影感受文化</p>  
+        </div>  
+  
+        <div class="video-grid">  
+  
+            <article class="video-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85" alt="琉璃珠灯制作纪录影像">  
+                </div>  
+                <span class="play-mark">▶</span>  
+                <h3>琉璃珠灯制作纪录</h3>  
+                <p>从材料到成品，记录传统制作工艺</p>  
+            </article>  
+  
+            <article class="video-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=85" alt="传统匠艺访谈影像">  
+                </div>  
+                <span class="play-mark">▶</span>  
+                <h3>匠人访谈</h3>  
+                <p>聆听手工艺背后的传承故事</p>  
+            </article>  
+  
+            <article class="video-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=85" alt="琉璃珠灯制作细节影像">  
+                </div>  
+                <span class="play-mark">▶</span>  
+                <h3>珠体制作过程</h3>  
+                <p>近距离感受琉璃珠的工艺细节</p>  
+            </article>  
+  
+            <article class="video-card reveal">  
+                <div class="gallery-image">  
+                    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85" alt="珠灯光影沉浸体验">  
+                </div>  
+                <span class="play-mark">▶</span>  
+                <h3>光影沉浸</h3>  
+                <p>在光影变化中感受珠灯艺术</p>  
+            </article>  
+  
+        </div>  
+  
+    </section>  
+  
+  
+    <!-- ==================================================  
+         全站页脚  
+         ================================================== -->  
+    <footer class="site-footer">  
+  
+        <h2>珠光入灯 · 匠艺传</h2>  
+        <p>非遗琉璃珠灯数字专题站</p>  
+        <p>让传统技艺在光影中延续</p>  
+  
+        <nav class="footer-nav">  
+            <a href="#home">首页</a>  
+            <a href="#culture">文化</a>  
+            <a href="#craft">技艺</a>  
+            <a href="#patterns">纹样</a>  
+            <a href="#gallery">赏析</a>  
+            <a href="#heritage">传承</a>  
+            <a href="#video">影像</a>  
+        </nav>  
+  
+    </footer>  
+  
+</main>  
+  
+  
+<!-- ==================================================  
+     图片放大查看器  
+     ================================================== -->  
+<div class="image-viewer" id="imageViewer">  
+  
+    <!-- 关闭按钮 -->  
+    <button class="viewer-close" id="viewerClose" aria-label="关闭图片">&times;</button>  
+  
+    <!-- 放大图片 -->  
+    <img id="viewerImage" src="" alt="图片放大预览">  
+  
+</div>  
+  
+  
+<script>  
+  
+/* ==================================================  
+   01. 移动端侧栏菜单  
+   ================================================== */  
+  
+const sidebar = document.getElementById("sidebar");  
+const menuToggle = document.getElementById("menuToggle");  
+const menuOverlay = document.getElementById("menuOverlay");  
+const navLinks = document.querySelectorAll(".main-navigation a");  
+  
+// 打开或关闭侧栏  
+function toggleMenu() {  
+    const isOpen = sidebar.classList.toggle("open");  
+  
+    menuOverlay.classList.toggle("show", isOpen);  
+    menuToggle.setAttribute("aria-expanded", isOpen);  
+    menuToggle.innerHTML = isOpen ? "×" : "☰";  
+}  
+  
+// 关闭侧栏  
+function closeMenu() {  
+    sidebar.classList.remove("open");  
+    menuOverlay.classList.remove("show");  
+    menuToggle.setAttribute("aria-expanded", "false");  
+    menuToggle.innerHTML = "☰";  
+}  
+  
+// 点击汉堡按钮  
+menuToggle.addEventListener("click", toggleMenu);  
+  
+// 点击遮罩关闭  
+menuOverlay.addEventListener("click", closeMenu);  
+  
+// 点击导航后关闭移动端菜单  
+navLinks.forEach(link => {  
+    link.addEventListener("click", closeMenu);  
+});  
+  
+// 窗口变回桌面尺寸时清除移动端菜单状态  
+window.addEventListener("resize", () => {  
+    if (window.innerWidth > 768) {  
+        closeMenu();  
+    }  
+});  
+  
+  
+/* ==================================================  
+   02. 导航平滑滚动  
+   ================================================== */  
+  
+// 所有锚点导航自动平滑滚动  
+document.querySelectorAll('a[href^="#"]').forEach(link => {  
+  
+    link.addEventListener("click", function(event) {  
+  
+        const targetId = this.getAttribute("href");  
+  
+        if (!targetId || targetId === "#") return;  
+  
+        const target = document.querySelector(targetId);  
+  
+        if (target) {  
+            event.preventDefault();  
+  
+            target.scrollIntoView({  
+                behavior: "smooth",  
+                block: "start"  
+            });  
+        }  
+  
+    });  
+  
+});  
+  
+  
+/* ==================================================  
+   03. 滚动时导航高亮  
+   ================================================== */  
+  
+const sections = document.querySelectorAll("main section[id]");  
+  
+const navObserver = new IntersectionObserver((entries) => {  
+  
+    entries.forEach(entry => {  
+  
+        if (entry.isIntersecting) {  
+  
+            const currentId = entry.target.id;  
+  
+            navLinks.forEach(link => {  
+  
+                link.classList.remove("active");  
+  
+                if (link.getAttribute("href") === "#" + currentId) {  
+                    link.classList.add("active");  
+                }  
+  
+            });  
+  
+        }  
+  
+    });  
+  
+}, {  
+    rootMargin: "-25% 0px -60% 0px"  
+});  
+  
+sections.forEach(section => {  
+    navObserver.observe(section);  
+});  
+  
+  
+/* ==================================================  
+   04. 图片点击放大  
+   ================================================== */  
+  
+const imageViewer = document.getElementById("imageViewer");  
+const viewerImage = document.getElementById("viewerImage");  
+const viewerClose = document.getElementById("viewerClose");  
+  
+// 页面内图片点击后打开大图  
+document.querySelectorAll("main img").forEach(img => {  
+  
+    img.addEventListener("click", () => {  
+  
+        viewerImage.src = img.src;  
+        viewerImage.alt = img.alt || "图片预览";  
+  
+        imageViewer.classList.add("show");  
+        document.body.style.overflow = "hidden";  
+  
+    });  
+  
+});  
+  
+// 关闭图片查看器  
+function closeViewer() {  
+    imageViewer.classList.remove("show");  
+    document.body.style.overflow = "";  
+}  
+  
+// 点击关闭按钮  
+viewerClose.addEventListener("click", closeViewer);  
+  
+// 点击遮罩关闭  
+imageViewer.addEventListener("click", event => {  
+    if (event.target === imageViewer) {  
+        closeViewer();  
+    }  
+});  
+  
+// 点击放大图片本身也关闭  
+viewerImage.addEventListener("click", closeViewer);  
+  
+// 按 ESC 键退出图片预览或移动端菜单  
+document.addEventListener("keydown", event => {  
+  
+    if (event.key === "Escape") {  
+        closeViewer();  
+        closeMenu();  
+    }  
+  
+});  
+  
+  
+/* ==================================================  
+   05. 滚动进入淡入动画  
+   ================================================== */  
+  
+const revealElements = document.querySelectorAll(".reveal");  
+  
+const revealObserver = new IntersectionObserver((entries) => {  
+  
+    entries.forEach(entry => {  
+  
+        if (entry.isIntersecting) {  
+            entry.target.classList.add("visible");  
+  
+            // 进入后不再重复触发  
+            revealObserver.unobserve(entry.target);  
+        }  
+  
+    });  
+  
+}, {  
+    threshold: 0.12  
+});  
+  
+revealElements.forEach(element => {  
+    revealObserver.observe(element);  
+});  
+  
+  
+/* ==================================================  
+   06. 图片加载失败时的备用处理  
+   ================================================== */  
+  
+// 图片加载失败，保留布局并提示  
+document.querySelectorAll("img").forEach(img => {  
+  
+    img.addEventListener("error", function() {  
+  
+        this.style.backgroundColor = "#1C7882";  
+        this.style.minHeight = "180px";  
+        this.alt = "图片暂不可用，请替换图片链接";  
+  
+    });  
+  
+});  
+  
+</script>  
+  
+</body>  
+</html>  
